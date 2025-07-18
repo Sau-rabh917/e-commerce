@@ -20,21 +20,23 @@ const CategoryMobile = () => {
   const filtered = demoProducts.filter(p => p.price <= price);
 
   return (
-    <div className="flex">
-      <div className="min-w-[240px]">
+    <div className="flex flex-col md:flex-row w-full max-w-full overflow-x-hidden">
+      {/* Sidebar: Hamburger on mobile, vertical on desktop */}
+      <div className="w-full md:w-auto md:min-w-[240px]">
         <CategorySidebar price={price} setPrice={setPrice} minPrice={minPrice} maxPrice={maxPrice} />
       </div>
-      <div className="flex-1 max-w-5xl mx-auto py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-left">Mobile</h1>
+      {/* Main content */}
+      <div className="flex-1 w-full max-w-full py-8 px-2 sm:px-4 mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-left">Mobile</h1>
         <p className="text-gray-600 mb-6 text-left">All mobile phones and related products will be shown here.</p>
         <div className="mb-4 text-sm text-gray-500">Showing products up to <span className="font-semibold text-emerald-600">${price}</span></div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6">
           {filtered.map(product => (
-            <div key={product.id} className="bg-white rounded-2xl shadow hover:shadow-2xl transition p-8 flex flex-col items-center min-h-[380px] min-w-[270px] max-w-[350px] mx-auto">
-              <img src={product.img} alt={product.name} className="w-48 h-48 object-cover rounded-xl mb-4 transition-transform duration-300 hover:scale-110" />
-              <div className="font-semibold text-lg md:text-xl mb-2 text-center">{product.name}</div>
-              <div className="text-emerald-600 font-bold mb-2 text-lg md:text-xl">${product.price}</div>
-              <div className="text-sm md:text-base text-gray-500 text-center mb-4">{product.desc}</div>
+            <div key={product.id} className="bg-white rounded-2xl shadow hover:shadow-2xl transition p-4 flex flex-col items-center min-h-[320px] w-full max-w-full mx-auto">
+              <img src={product.img} alt={product.name} className="w-40 h-40 object-cover rounded-xl mb-4 transition-transform duration-300 hover:scale-110" />
+              <div className="font-semibold text-lg mb-2 text-center">{product.name}</div>
+              <div className="text-emerald-600 font-bold mb-2 text-lg">${product.price}</div>
+              <div className="text-sm text-gray-500 text-center mb-4">{product.desc}</div>
               <button className="mt-auto bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded text-base font-semibold">Add to Cart</button>
             </div>
           ))}

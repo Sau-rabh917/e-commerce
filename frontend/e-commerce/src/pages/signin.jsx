@@ -12,57 +12,71 @@ const Signin = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-100 via-white to-emerald-200">
-      <div className="flex w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden">
-        {/* Left Side Illustration (hidden on mobile) */}
-        <div className="hidden md:flex flex-col justify-center items-center bg-emerald-50 w-1/2 p-8">
+      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+        {/* Mobile: Illustration and Welcome Text (vertical stack) */}
+        <div className="flex flex-col items-center p-8 md:hidden">
           <img
             src="https://undraw.co/api/illustrations/3b0b7b7e-2e2e-4e2e-8e2e-2e2e2e2e2e2e"
             alt="Sign In Illustration"
-            className="w-64 h-64 object-contain mb-6 drop-shadow-lg"
+            className="w-40 h-40 object-contain mb-4 drop-shadow-lg"
             style={{ filter: 'drop-shadow(0 4px 12px rgba(16,185,129,0.15))' }}
             onError={e => (e.target.style.display = 'none')}
           />
           <h3 className="text-2xl font-bold text-emerald-600 text-center">Welcome Back!</h3>
-          <p className="text-gray-500 text-center mt-2">Sign in to access your account and explore the best tech deals.</p>
+          <p className="text-gray-500 text-center mt-2 mb-6">Sign in to access your account and explore the best tech deals.</p>
         </div>
-        {/* Right Side Form */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-emerald-600 text-center">Sign In to TechShed</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-1" htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 bg-gray-50"
-                placeholder="Enter your email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-              />
+        <div className="flex w-full">
+          {/* Left Side Illustration (hidden on mobile) */}
+          <div className="hidden md:flex flex-col justify-center items-center bg-emerald-50 w-1/2 p-8">
+            <img
+              src="https://undraw.co/api/illustrations/3b0b7b7e-2e2e-4e2e-8e2e-2e2e2e2e2e2e"
+              alt="Sign In Illustration"
+              className="w-64 h-64 object-contain mb-6 drop-shadow-lg"
+              style={{ filter: 'drop-shadow(0 4px 12px rgba(16,185,129,0.15))' }}
+              onError={e => (e.target.style.display = 'none')}
+            />
+            <h3 className="text-2xl font-bold text-emerald-600 text-center">Welcome Back!</h3>
+            <p className="text-gray-500 text-center mt-2">Sign in to access your account and explore the best tech deals.</p>
+          </div>
+          {/* Right Side Form */}
+          <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-emerald-600 text-center">Sign In to TechShed</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1" htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 bg-gray-50"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1" htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 bg-gray-50"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2.5 rounded-lg text-lg shadow-md transition"
+              >
+                Sign In
+              </button>
+            </form>
+            <div className="mt-8 text-center text-gray-600 text-sm">
+              Don't have an account?{' '}
+              <Link to="/register" className="text-emerald-600 font-semibold hover:underline">Register</Link>
             </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-1" htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 bg-gray-50"
-                placeholder="Enter your password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2.5 rounded-lg text-lg shadow-md transition"
-            >
-              Sign In
-            </button>
-          </form>
-          <div className="mt-8 text-center text-gray-600 text-sm">
-            Don't have an account?{' '}
-            <Link to="/register" className="text-emerald-600 font-semibold hover:underline">Register</Link>
           </div>
         </div>
       </div>

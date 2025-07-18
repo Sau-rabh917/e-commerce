@@ -166,16 +166,16 @@ const Landing = () => {
         </div>
       </div>
       {/* New horizontal images section with overlays */}
-      <div className="flex flex-col md:flex-row justify-center bg-gray-100 items-center gap-4 mt-6 w-full max-w-screen-sm md:max-w-none mx-auto px-2">
-        <div className="relative w-full md:w-auto p-2 md:p-5 flex-shrink-0">
+      <div className="flex flex-col md:flex-row justify-center bg-gray-100 items-center gap-4 mt-6 w-full px-0">
+        <div className="relative w-full md:w-1/2 p-2 flex-shrink-0">
           <img
             src="https://static.wixstatic.com/media/c22c23_e140bfa8cd6f4cb2ac5ee6e204f64073~mv2.jpg/v1/fill/w_883,h_527,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c22c23_e140bfa8cd6f4cb2ac5ee6e204f64073~mv2.jpg"
             alt="Promo 1"
-            className="shadow w-full h-48 md:h-auto object-cover rounded"
+            className="shadow w-full h-60 md:h-96 object-cover rounded"
           />
-          <div className="absolute top-1/2 left-1/2 md:left-12 md:-translate-x-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center md:items-start text-black max-w-xs w-[90%] md:w-auto">
-            <h2 className="text-lg md:text-2xl font-bold mb-2 text-center md:text-left">Special Promotion 1</h2>
-            <p className="mb-2 text-center md:text-left text-gray-700">Don't miss out on this exclusive deal!</p>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-black max-w-xs w-[90%]">
+            <h2 className="text-lg font-bold mb-2 text-center">Special Promotion 1</h2>
+            <p className="mb-2 text-center text-gray-700">Don't miss out on this exclusive deal!</p>
             <a
               href="/special-offers"
               className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2 rounded shadow mt-2 text-center"
@@ -184,17 +184,17 @@ const Landing = () => {
             </a>
           </div>
         </div>
-        <div className="relative w-full md:w-auto p-2 md:p-5 flex-shrink-0">
+        <div className="relative w-full md:w-1/2 p-2 flex-shrink-0">
           <img
             src="https://static.wixstatic.com/media/c837a6_d84a631864a442a496670bc2d787c6a0~mv2.jpg/v1/fill/w_883,h_527,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c837a6_d84a631864a442a496670bc2d787c6a0~mv2.jpg"
             alt="Promo 2"
-            className="shadow w-full h-48 md:h-auto object-cover rounded"
+            className="shadow w-full h-60 md:h-96 object-cover rounded"
           />
-          <div className="absolute top-1/2 left-1/2 md:left-12 md:-translate-x-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center md:items-start text-black max-w-xs w-[90%] md:w-auto">
-            <h2 className="text-lg md:text-2xl font-bold mb-2 text-center md:text-left">Special Promotion 2</h2>
-            <p className="mb-2 text-center md:text-left text-gray-700">Don't miss out on this exclusive deal!</p>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-black max-w-xs w-[90%]">
+            <h2 className="text-lg font-bold mb-2 text-center">Special Promotion 2</h2>
+            <p className="mb-2 text-center text-gray-700">Don't miss out on this exclusive deal!</p>
             <a
-              href="/special-offers"
+              href=""
               className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2 rounded shadow mt-2 text-center"
             >
               Shop Now

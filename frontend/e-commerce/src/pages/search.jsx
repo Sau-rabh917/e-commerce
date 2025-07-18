@@ -62,7 +62,7 @@ const Search = () => {
       <div className="w-full max-w-5xl mx-auto">
         {query.trim() ? (
           filtered.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid gap-8">
               {filtered.map(product => (
                 <div key={product.name + product.price} className="bg-white rounded-2xl shadow hover:shadow-2xl transition p-8 flex flex-col items-center min-h-[380px] min-w-[270px] max-w-[350px] mx-auto">
                   <img src={product.img} alt={product.name} className="w-48 h-48 object-cover rounded-xl mb-4 transition-transform duration-300 hover:scale-110" />
