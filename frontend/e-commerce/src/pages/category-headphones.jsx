@@ -30,7 +30,7 @@ const CategoryHeadphones = () => {
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-left">Headphones</h1>
         <p className="text-gray-600 mb-6 text-left">All headphones and related products will be shown here.</p>
         <div className="mb-4 text-sm text-gray-500">Showing products up to <span className="font-semibold text-emerald-600">${price}</span></div>
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {filtered.map(product => (
             <div key={product.id} className="bg-white rounded-2xl shadow hover:shadow-2xl transition p-4 flex flex-col items-center min-h-[320px] w-full max-w-full mx-auto">
               <img src={product.img} alt={product.name} className="w-40 h-40 object-cover rounded-xl mb-4 transition-transform duration-300 hover:scale-110" />
