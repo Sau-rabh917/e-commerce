@@ -1,15 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Registration logic here (not implemented)
+    setError("");
+    setSuccess("");
+    try {
+      const res = await fetch("http://localhost:3000/api/user/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: name, email, password })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSuccess("Registration successful! Redirecting to login...");
+        setTimeout(() => navigate("/signin"), 1500);
+      } else {
+        setError(data.message || "Registration failed");
+      }
+    } catch (err) {
+      setError("Server error. Please try again later.");
+    }
   };
 
   return (
@@ -80,18 +99,6 @@ const Register = () => {
                   required
                 />
               </div>
-              <div>
-                <label className="block text-gray-700 font-semibold mb-1" htmlFor="confirmPassword">Confirm Password</label>
-                <input
-                  id="confirmPassword"
-                  type="password"
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 bg-gray-50"
-                  placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={e => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
               <button
                 type="submit"
                 className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2.5 rounded-lg text-lg shadow-md transition"
@@ -99,6 +106,8 @@ const Register = () => {
                 Register
               </button>
             </form>
+            {error && <div className="text-red-500 text-center mt-2">{error}</div>}
+            {success && <div className="text-green-600 text-center mt-2">{success}</div>}
             <div className="mt-8 text-center text-gray-600 text-sm">
               Already have an account?{' '}
               <Link to="/signin" className="text-emerald-600 font-semibold hover:underline">Sign In</Link>

@@ -1,13 +1,35 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Sign in logic here (not implemented)
+    setError("");
+    setSuccess("");
+    try {
+      const res = await fetch("http://localhost:3000/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (data.success && data.token) {
+        setSuccess("Login successful! Redirecting...");
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setTimeout(() => navigate("/"), 1500);
+      } else {
+        setError(data.message || "Login failed");
+      }
+    } catch (err) {
+      setError("Server error. Please try again later.");
+    }
   };
 
   return (
@@ -73,6 +95,8 @@ const Signin = () => {
                 Sign In
               </button>
             </form>
+            {error && <div className="text-red-500 text-center mt-2">{error}</div>}
+            {success && <div className="text-green-600 text-center mt-2">{success}</div>}
             <div className="mt-8 text-center text-gray-600 text-sm">
               Don't have an account?{' '}
               <Link to="/register" className="text-emerald-600 font-semibold hover:underline">Register</Link>
