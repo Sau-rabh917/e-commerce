@@ -9,11 +9,11 @@ const Signin = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     setError("");
     setSuccess("");
     try {
-      const res = await fetch("https://e-commerce-4bm4.onrender.com/signin", {
+      const res = await fetch("https://e-commerce-4bm4.onrender.com/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
