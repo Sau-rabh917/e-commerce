@@ -13,7 +13,7 @@ const Signin = () => {
     setError("");
     setSuccess("");
     try {
-      const res = await fetch("https://e-commerce-ql1j.onrender.com/signin ", {
+      const res = await fetch("https://e-commerce-4bm4.onrender.com/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
