@@ -14,7 +14,7 @@ const Register = () => {
     setError("");
     setSuccess("");
     try {
-      const res = await fetch("http://localhost:3000/api/user/register", {
+      const res = await fetch("https://e-commerce-ql1j.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: name, email, password })
